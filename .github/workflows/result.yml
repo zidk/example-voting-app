@@ -16,7 +16,7 @@ on:
  
 
 jobs:
-  dockerize:
+  result-dockerize:
     runs-on: ubuntu-latest
     steps:
       -

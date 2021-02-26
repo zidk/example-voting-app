@@ -16,7 +16,7 @@ on:
  
 
 jobs:
-  dockerize-java:
+  worker-dockerize-java:
     runs-on: ubuntu-latest
     steps:
       -
@@ -64,7 +64,7 @@ jobs:
           tags: bretfisher/examplevotingapp_worker:java
           labels: ${{ steps.docker_meta.outputs.labels }}
 
-  dockerize-dotnet:
+  worker-dockerize-dotnet:
     runs-on: ubuntu-latest
     steps:
       -
