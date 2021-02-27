@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: worker
-          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: bretfisher/examplevotingapp_worker:java
           labels: ${{ steps.docker_meta.outputs.labels }}

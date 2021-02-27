@@ -1,4 +1,4 @@
-FROM maven:3.6-jdk-8-alpine AS build
+FROM maven:3.6-openjdk-11-slim AS build
 
 WORKDIR /code
 
@@ -10,7 +10,7 @@ RUN ["mvn", "verify"]
 COPY ["src/main", "/code/src/main"]
 RUN ["mvn", "package"]
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:11-jre-slim
 
 COPY --from=build /code/target/worker-jar-with-dependencies.jar /
 
