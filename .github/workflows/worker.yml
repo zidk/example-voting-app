@@ -61,7 +61,7 @@ jobs:
           context: worker
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }},bretfisher/examplevotingapp_vote:latest,bretfisher/examplevotingapp_worker:java
+          tags: ${{ steps.docker_meta.outputs.tags }},bretfisher/examplevotingapp_worker:latest,bretfisher/examplevotingapp_worker:java
           labels: ${{ steps.docker_meta.outputs.labels }}
 
   
