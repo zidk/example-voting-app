@@ -61,53 +61,7 @@ jobs:
           context: worker
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: bretfisher/examplevotingapp_worker:java
+          tags: ${{ steps.docker_meta.outputs.tags }},bretfisher/examplevotingapp_vote:latest,bretfisher/examplevotingapp_worker:java
           labels: ${{ steps.docker_meta.outputs.labels }}
 
-  worker-dockerize-dotnet:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            bretfisher/examplevotingapp_worker
-          # ghcr.io/bretfisher/clock
-          # add git short SHA as Docker tag
-          tag-sha: false
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-      #   name: Login to GHCR
-      #   if: github.event_name != 'pull_request'
-      #   uses: docker/login-action@v1
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ secrets.GHCR_USERNAME }}
-      #     password: ${{ secrets.GHCR_TOKEN }}
-      # -
-        name: Build and push clock
-        uses: docker/build-push-action@v2
-        with:
-          context: worker
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: bretfisher/examplevotingapp_worker:latest,bretfisher/examplevotingapp_worker:dotnet
-          labels: ${{ steps.docker_meta.outputs.labels }}
+  
