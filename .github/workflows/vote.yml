@@ -32,7 +32,7 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             bretfisher/examplevotingapp_vote
-            ghcr.io/bretfisher/examplevotingapp_vote
+            ghcr.io/bretfisher/example-voting-app:vote
           flavor: |
             latest=false
           tags: |
