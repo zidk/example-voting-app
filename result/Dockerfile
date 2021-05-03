@@ -7,14 +7,15 @@ EXPOSE 80
 # add tini for proper signal handling
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    curl \
-    tini \
+    # use 'apt-cache policy <package-name>' to get installed versions
+    curl=7.64.0-4+deb10u2 \
+    tini=0.18.0-1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 # have nodemon available for local dev use (file watching)
-RUN npm install -g nodemon
+RUN npm install -g nodemon@2.*
 
 # always copy in package dependencies and install them before copying in source code
 # this ensures proper build layer caching and makes for faster re-builds
