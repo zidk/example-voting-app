@@ -28,4 +28,4 @@ RUN npm ci \
 
 COPY . .
 
-CMD ["/tini", "--", "node", "server.js"]
+CMD ["tini", "--", "node", "server.js"]
