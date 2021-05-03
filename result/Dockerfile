@@ -1,32 +1,30 @@
 FROM node:12-slim
 
+ENV PORT 80
+EXPOSE 80
+
 # add curl for healthcheck
+# add tini for proper signal handling
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     curl \
+    tini \
     && rm -rf /var/lib/apt/lists/*
-
-# Add Tini for proper init of signals
-ENV TINI_VERSION v0.19.0
-ARG TARGETARCH
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} /tini
-RUN chmod +x /tini
 
 WORKDIR /app
 
 # have nodemon available for local dev use (file watching)
 RUN npm install -g nodemon
 
+# always copy in package dependencies and install them before copying in source code
+# this ensures proper build layer caching and makes for faster re-builds
 COPY package*.json ./
 
 RUN npm ci \
  && npm cache clean --force \
+ # move node_modules up a directory so they still work with bind-mounted code in development
  && mv /app/node_modules /node_modules
 
 COPY . .
-
-ENV PORT 80
-
-EXPOSE 80
 
 CMD ["/tini", "--", "node", "server.js"]
