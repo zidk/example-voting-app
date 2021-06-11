@@ -1,6 +1,5 @@
----
-##########################
-## Hadolint config file ##
-##########################
 ignored:
-  - DL3029 # we want to use FROM --platform in GHA
+  - DL3006 #image pin versions
+  - DL3008 #apt pin versions
+  - DL3018 #apk add pin versions
+  - DL3028 #gem install pin versions

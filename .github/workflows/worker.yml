@@ -4,14 +4,14 @@ on:
   # we want pull requests so we can build(test) but not push to image registry
   push:
     branches:
-      - 'master'
+      - 'main'
     # only build when important files change
     paths:
       - 'worker/**'
       - '.github/workflows/worker.yml'
   pull_request:
     branches:
-      - 'master'
+      - 'main'
     # only build when important files change
     paths:
       - 'worker/**'
@@ -27,18 +27,6 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2.3.4
-      -
-        name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v3.3.0
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            bretfisher/examplevotingapp_worker
-          flavor: |
-            latest=false
-          tags: |
-            type=raw,value=latest
       -
         # we need qemu and buildx so we can build multiple platforms later
         name: Set up QEMU
@@ -64,6 +52,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3.3.0
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            bretfisher/examplevotingapp_worker
+          flavor: |
+            latest=false
+          tags: |
+            type=raw,value=latest
       -
         # this will build the images, once per platform, 
         # then push to both Docker Hub and GHCR
