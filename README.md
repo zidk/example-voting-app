@@ -2,9 +2,9 @@ Example Voting App
 =========
 
 [![GitHub Super-Linter](https://github.com/bretfisher/example-voting-app/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-![Build and Push Result](https://github.com/bretfisher/example-voting-app/actions/workflows/result-build-and-push.yml/badge.svg?branch=master)
-![Build and Push Vote](https://github.com/bretfisher/example-voting-app/actions/workflows/vote-build-and-push.yml/badge.svg?branch=master)
-![Build and Push Worker](https://github.com/bretfisher/example-voting-app/actions/workflows/worker-build-and-push.yml/badge.svg?branch=master)
+![Build and Push Result](https://github.com/bretfisher/example-voting-app/actions/workflows/result.yml/badge.svg?branch=master)
+![Build and Push Vote](https://github.com/bretfisher/example-voting-app/actions/workflows/vote.yml/badge.svg?branch=master)
+![Build and Push Worker](https://github.com/bretfisher/example-voting-app/actions/workflows/worker.yml/badge.svg?branch=master)
 
 A simple distributed application running across multiple Docker containers.
 
