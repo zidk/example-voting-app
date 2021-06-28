@@ -27,6 +27,12 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2.3.4
+      - 
+        name: Copy in Seed Data
+        run: cp ./seed-data/post* ./vote
+      -
+        name: Copy in Seed Script
+        run: cp ./seed-data/generate-votes.sh ./vote/generate-some-votes.sh
       -
         # we need qemu and buildx so we can build multiple platforms later
         name: Set up QEMU
