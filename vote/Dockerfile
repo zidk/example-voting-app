@@ -1,9 +1,10 @@
 # Using official python runtime base image
 FROM python:3.9-slim
 
-# add curl for healthcheck
+# add curl for healthcheck, add apache2-utils for seeding with "ab"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+    apache2-utils \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
