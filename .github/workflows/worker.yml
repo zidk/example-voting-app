@@ -67,10 +67,13 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            bretfisher/examplevotingapp_worker:latest
-            ghcr.io/bretfisher/example-voting-app:worker
+            bretfisher/examplevotingapp_worker
+            ghcr.io/bretfisher/example-voting-app-worker
           flavor: |
             latest=false
+          tags: |
+            type=raw,value=latest
+            type=raw,prefix=gha-,value=${{ github.run_id }}
       -
         # this will build the images, once per platform, 
         # then push to both Docker Hub and GHCR
