@@ -1,10 +1,10 @@
 Example Voting App
 =========
 
-[![GitHub Super-Linter](https://github.com/bretfisher/example-voting-app/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-![Build and Push Result](https://github.com/bretfisher/example-voting-app/actions/workflows/result.yml/badge.svg?branch=master)
-![Build and Push Vote](https://github.com/bretfisher/example-voting-app/actions/workflows/vote.yml/badge.svg?branch=master)
-![Build and Push Worker](https://github.com/bretfisher/example-voting-app/actions/workflows/worker.yml/badge.svg?branch=master)
+[![Lint Code Base](https://github.com/BretFisher/example-voting-app/actions/workflows/call-super-linter.yaml/badge.svg)](https://github.com/BretFisher/example-voting-app/actions/workflows/call-super-linter.yaml)
+[![Build Result](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-result.yaml/badge.svg)](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-result.yaml)
+[![Build Vote](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-vote.yaml/badge.svg)](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-vote.yaml)
+[![Build Worker](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-worker.yaml/badge.svg)](https://github.com/BretFisher/example-voting-app/actions/workflows/call-docker-build-worker.yaml)
 
 A simple distributed application running across multiple Docker containers.
 
@@ -71,7 +71,7 @@ Architecture
 
 ![Architecture diagram](architecture.png)
 
-* A front-end web app in [Python](/vote) which lets you vote between two options
+* A frontend web app in [Python](/vote) which lets you vote between two options
 * A [Redis](https://hub.docker.com/_/redis/) queue which collects new votes
 * A [Java](/worker/src/main) worker which consumes votes and stores them in…
 * A [Postgres](https://hub.docker.com/_/postgres/) database backed by a Docker volume
