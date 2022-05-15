@@ -8,14 +8,14 @@ on:
     # only build when important files change
     paths:
       - 'result/**'
-      - '.github/workflows/result.yml'
+      - '.github/workflows/call-docker-build-result.yaml'
   pull_request:
     branches:
       - 'main'
     # only build when important files change
     paths:
       - 'result/**'
-      - '.github/workflows/result.yml'
+      - '.github/workflows/call-docker-build-result.yaml'
   schedule:
     # re-run montly to keep image fesh with upstream base images
     - cron: '0 12 15 * *'
