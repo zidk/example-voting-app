@@ -16,8 +16,8 @@ spec:
         app: result
     spec:
       containers:
-      - image: ghcr.io/bretfisher/example-voting-app-result:gha-1638605336
-        name: result
-        ports:
-        - containerPort: 80
+        - image: ghcr.io/bretfisher/example-voting-app-result:gha-1638605336
           name: result
+          ports:
+            - containerPort: 80
+              name: result
