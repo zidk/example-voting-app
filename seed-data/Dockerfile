@@ -13,4 +13,5 @@ COPY . .
 # create POST data files with ab friendly formats
 RUN python make-data.py
 
+# hadolint ignore=DL3025
 CMD /seed/generate-votes.sh
