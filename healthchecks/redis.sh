@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC3040
 set -eo pipefail
 
 host="$(hostname -i || echo '127.0.0.1')"
