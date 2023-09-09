@@ -6,7 +6,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'result/**'
+      - '.github/workflows/01-basic-docker-build.yaml'
   pull_request:
+    branches:
+      - main
+    paths:
+      - 'result/**'
+      - '.github/workflows/01-basic-docker-build.yaml'
 
 jobs:
   build-image:
@@ -24,5 +32,6 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:result"
           push: ${{ github.event_name != 'pull_request' }}
           tags: zidk47/example-voting-app:latest,zidk47/example-voting-app:01
