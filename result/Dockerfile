@@ -22,7 +22,7 @@ RUN npm install -g nodemon@2.*
 # this ensures proper build layer caching and makes for faster re-builds
 COPY package*.json ./
 
-RUN npm ci \
+RUN npm install \
  && npm cache clean --force \
  # move node_modules up a directory so they still work with bind-mounted code in development
  && mv /app/node_modules /node_modules
