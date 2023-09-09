@@ -32,7 +32,6 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v4
         with:
-          context: ./result
-          file: ./result/Dockerfile
+          context: "{{defaultContext}}:result"
           push: ${{ github.event_name != 'pull_request' }}
           tags: zidk47/example-voting-app:latest,zidk47/example-voting-app:01
